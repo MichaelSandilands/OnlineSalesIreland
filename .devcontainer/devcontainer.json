@@ -1,0 +1,40 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/rocker-org/devcontainer-templates/tree/main/src/r-ver
+{
+  "name": "R (rocker/r-ver base)",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "ghcr.io/rocker-org/devcontainer/r-ver:4",
+
+  // Features to add to the dev container. More info: https://containers.dev/features.
+  // "features": {},
+  "features": {
+    "ghcr.io/rocker-org/devcontainer-features/rstudio-server:0": {},
+    "ghcr.io/rocker-org/devcontainer-features/quarto-cli:latest": {
+      "installChromium": true
+    },
+    "ghcr.io/rocker-org/devcontainer-features/renv-cache:0": {},
+    "ghcr.io/rocker-org/devcontainer-features/apt-packages:1": {
+      "packages": "libmagick++-dev,libsodium-dev,libsodium23"
+    }
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [8787],
+  "runArgs": ["-p", "8787:8787"],
+
+  "postStartCommand": "rstudio-server start",
+  "portsAttributes": {
+    "8787": {
+      "label": "RStudio IDE"
+    }
+  },
+
+  // Use 'postCreateCommand' to run commands after the container is created.
+  "postCreateCommand": "R -q -e 'renv::install()'",
+
+  // Configure tool-specific properties.
+  // "customizations": {},
+
+  // Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
+  // "remoteUser": "root"
+}
