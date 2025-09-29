@@ -6,10 +6,22 @@ Authors@R:
 Description: What the package does (one paragraph).
 License: MIT + file LICENSE
 Suggests: 
+    chores,
+    devtools,
+    ellmer,
+    gander,
+    lintr,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
-URL: https://github.com/MichaelSandilands/OnlineSalesIreland
+URL: https://github.com/MichaelSandilands/OnlineSalesIreland, https://michaelsandilands.github.io/OnlineSalesIreland/
 BugReports: https://github.com/MichaelSandilands/OnlineSalesIreland/issues
+Imports: 
+    csodata,
+    dplyr,
+    lubridate,
+    rlang,
+    stringr,
+    tidyr
